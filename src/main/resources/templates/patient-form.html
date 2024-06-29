@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter ou modifier un patient</title>
+</head>
+<body>
+
+<main>
+    <form th:action="@{/patient/create-update}" th:object="${patient}" method="post" >
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label for="lastname">Nom</label>
+            <input type="text" th:field="*{lastName}" id="lastname" />
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+        </div>
+        <div>
+            <label for="firstname">Prénom</label>
+            <input type="text" th:field="*{firstName}" id="firstname" />
+            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+        </div>
+        <div>
+            <label for="birthdate">Date de naissance</label>
+            <input type="date" th:field="*{birthDate}" id="birthdate" />
+            <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></p>
+        </div>
+        <button type="submit">
+            <span th:text="${patient.id} == null ? 'Créer' : 'Modifier'"></span> le patient
+        </button>
+    </form>
+</main>
+
+</body>
+</html>
