@@ -63,4 +63,14 @@ public class PatientController {
         model.addAttribute("patient", patientService.findById(id));
         return "patient-form";
     }
+
+    @GetMapping("/patient/search")
+    public String searchPatient(@RequestParam("nameSought") String nameSought, Model model) {
+        if(nameSought.isBlank()) {
+            model.addAttribute("patients", patientService.findAll());
+        } else {
+            model.addAttribute("patients", patientService.searchPatients(nameSought));
+        }
+        return "index";
+    }
 }

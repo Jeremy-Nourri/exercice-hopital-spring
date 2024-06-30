@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+
     <title>Ajouter ou modifier un patient</title>
 </head>
 <body>
 
-<main>
+<header th:replace="header :: header"></header>
+
+<main class="container">
     <form th:action="@{/patient/create-update}" th:object="${patient}" method="post" >
         <input type="hidden" th:field="*{id}" />
         <div>

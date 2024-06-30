@@ -18,7 +18,7 @@ public class PatientService implements IBaseService<Patient> {
                 .id(currentId++)
                 .lastName("Doe")
                 .firstName("John")
-                .birthDate(LocalDate.parse("1990-01-01"))
+                .birthDate(LocalDate.of(1980, 1, 1))
                 .build();
         patientList.add(patient);
     }
@@ -52,5 +52,11 @@ public class PatientService implements IBaseService<Patient> {
     @Override
     public List<Patient> findAll() {
         return patientList;
+    }
+
+    public List<Patient> searchPatients(String nameSought) {
+        return patientList.stream()
+                .filter(patient -> patient.getLastName().equalsIgnoreCase(nameSought) || patient.getFirstName().equalsIgnoreCase(nameSought))
+                .toList();
     }
 }

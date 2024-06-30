@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+
+    <title>Header</title>
+</head>
+<body>
+<th:block th:fragment="header">
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Accueil</a></li>
+            <li><a th:href="@{/patient/form}">Créer un patient</a></li>
+        </ul>
+    </nav>
+    <form th:action="@{/patient/search}" method="get">
+        <label for="nameSought">
+            <input type="text" name="nameSought" id="nameSought">
+        </label>
+        <button type="submit">Rechercher</button>
+    </form>
+</th:block>
+
+
+</body>
+</html>
